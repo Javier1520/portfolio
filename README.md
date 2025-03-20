@@ -19,4 +19,4 @@ A professional portfolio website for Javier Guerrero, showcasing skills, project
 
 ## Requirements
 
-- Set the environment variable (Fomrspree api key)
+- Set the environment variable (Formspree api key)
