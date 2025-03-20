@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 51, 51, 51;
+  --background-end-rgb: 30, 30, 30;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    )
+    fixed;
+  font-family: 'Open Sans', sans-serif;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.section-padding {
+  padding: 5rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 2rem;
+  }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.animated {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skill-card {
+  @apply bg-dark bg-opacity-50 p-4 rounded-lg flex flex-col items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-lg;
+}
+
+.project-card {
+  @apply bg-dark bg-opacity-50 rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-xl;
+}
+
+.btn-primary {
+  @apply bg-primary text-white px-6 py-3 rounded-md font-bold transition-all duration-300 hover:bg-opacity-90 hover:shadow-lg;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white px-6 py-3 rounded-md font-bold transition-all duration-300 hover:bg-opacity-90 hover:shadow-lg;
+}
+
+.btn-outline {
+  @apply border-2 border-white text-white px-6 py-3 rounded-md font-bold transition-all duration-300 hover:bg-white hover:bg-opacity-10;
+}
