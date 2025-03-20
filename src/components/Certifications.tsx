@@ -3,12 +3,13 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { FaAward } from 'react-icons/fa';
+import { Certification, AnimationVariants } from '@/types';
 
 const Certifications = () => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
 
-  const certifications = [
+  const certifications: Certification[] = [
     {
       title: 'Meta Backend Developer Specialization',
       issuer: 'Meta',
@@ -17,6 +18,15 @@ const Certifications = () => {
       date: 'January 2023'
     }
   ];
+
+  const motionVariants: AnimationVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8 }
+    }
+  };
 
   return (
     <section id="certifications" className="section-padding bg-gradient-to-b from-black to-dark">
@@ -30,9 +40,9 @@ const Certifications = () => {
 
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8 }}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={motionVariants}
           className="max-w-3xl mx-auto"
         >
           {certifications.map((cert, index) => (

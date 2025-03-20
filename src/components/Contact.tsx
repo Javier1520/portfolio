@@ -1,17 +1,18 @@
 'use client'
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, FormEvent } from 'react';
 import { FaEnvelope, FaPhone, FaLinkedin, FaGithub } from 'react-icons/fa';
 import { useForm, ValidationError } from '@formspree/react';
+import { ContactInfo, AnimationVariants } from '@/types';
 
 const Contact = () => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
   const formId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID || '';
   const [state, handleSubmit] = useForm(formId);
 
-  const contactInfo = [
+  const contactInfo: ContactInfo[] = [
     {
       icon: <FaEnvelope className="text-2xl" />,
       label: 'Email',
@@ -38,6 +39,14 @@ const Contact = () => {
     }
   ];
 
+  const fadeInVariants: AnimationVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { duration: 0.8 }
+    }
+  };
+
   return (
     <section id="contact" className="section-padding bg-dark">
       <div className="container mx-auto px-4 md:px-8">
@@ -50,9 +59,9 @@ const Contact = () => {
 
         <motion.div
           ref={ref}
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.8 }}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={fadeInVariants}
           className="grid grid-cols-1 md:grid-cols-2 gap-12"
         >
           <div>

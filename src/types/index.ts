@@ -33,6 +33,15 @@ export interface ContactInfo {
   link: string;
 }
 
+// Certification Types
+export interface Certification {
+  title: string;
+  issuer: string;
+  description: string;
+  link: string;
+  date: string;
+}
+
 // Animation Variants
 // This interface extends framer-motion's Variants type
 export interface AnimationVariants {
