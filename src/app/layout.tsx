@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { LayoutProps } from '@/types';
 
 export const metadata: Metadata = {
   title: 'Javier Guerrero | Full-Stack Developer',
@@ -8,9 +9,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: LayoutProps) {
   return (
     <html lang="en" className="scroll-smooth">
       <body>

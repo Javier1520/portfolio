@@ -3,19 +3,28 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { AnimationVariants } from '@/types';
 
 const About = () => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
+
+  const fadeInVariants: AnimationVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { duration: 0.8 }
+    }
+  };
 
   return (
     <section id="about" className="section-padding bg-dark bg-opacity-50">
       <div className="container mx-auto px-4 md:px-8">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.8 }}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={fadeInVariants}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
         >
           <div className="order-2 md:order-1">

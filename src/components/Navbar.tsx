@@ -2,10 +2,11 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { NavItem, AnimationVariants } from '@/types';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,14 +21,23 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Certifications', href: '#certifications' },
-    { name: 'Contact', href: '#contact' },
+  const navLinks: NavItem[] = [
+    { label: 'Home', href: '#home' },
+    { label: 'About', href: '#about' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Certifications', href: '#certifications' },
+    { label: 'Contact', href: '#contact' },
   ];
+
+  const mobileMenuVariants: AnimationVariants = {
+    hidden: { opacity: 0, height: 0 },
+    visible: { 
+      opacity: 1, 
+      height: 'auto',
+      transition: { duration: 0.3 }
+    }
+  };
 
   return (
     <nav 
@@ -45,11 +55,11 @@ const Navbar = () => {
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
               <Link 
-                key={link.name} 
+                key={link.label} 
                 href={link.href}
                 className="text-white hover:text-primary transition-colors duration-300"
               >
-                {link.name}
+                {link.label}
               </Link>
             ))}
           </div>
@@ -79,21 +89,20 @@ const Navbar = () => {
       {/* Mobile Navigation Menu */}
       {isOpen && (
         <motion.div 
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
+          initial="hidden"
+          animate="visible"
+          variants={mobileMenuVariants}
           className="md:hidden bg-dark bg-opacity-95 backdrop-blur-sm"
         >
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             {navLinks.map((link) => (
               <Link 
-                key={link.name} 
+                key={link.label} 
                 href={link.href}
                 className="text-white hover:text-primary transition-colors duration-300 py-2"
                 onClick={() => setIsOpen(false)}
               >
-                {link.name}
+                {link.label}
               </Link>
             ))}
           </div>

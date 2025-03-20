@@ -1,8 +1,20 @@
 'use client'
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { AnimationVariants } from '@/types';
 
 const Header = () => {
+  const motionVariants: AnimationVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.8
+      }
+    }
+  };
+
   return (
     <header id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-dark to-black z-0"></div>
@@ -12,9 +24,9 @@ const Header = () => {
       
       <div className="container mx-auto px-4 md:px-8 z-10 relative">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial="hidden"
+          animate="visible"
+          variants={motionVariants}
           className="text-center md:text-left md:max-w-2xl"
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-4">

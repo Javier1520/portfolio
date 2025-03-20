@@ -4,12 +4,13 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Image from 'next/image';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { Project, AnimationVariants } from '@/types';
 
 const Projects = () => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
 
-  const projects = [
+  const projects: Project[] = [
     {
       title: 'Bingo Game',
       description: 'A full-stack Django DRF and React application enabling user registration, real-time gameplay, and win claims. Features secure API authentication with session tokens, WebSocket integration, and Dockerized deployment.',
@@ -47,7 +48,7 @@ const Projects = () => {
     }
   ];
 
-  const containerVariants = {
+  const containerVariants: AnimationVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -57,7 +58,7 @@ const Projects = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: AnimationVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,

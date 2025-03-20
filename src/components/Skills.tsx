@@ -18,12 +18,13 @@ import {
   SiPostgresql, 
   SiMysql
 } from 'react-icons/si';
+import { SkillCategory, AnimationVariants } from '@/types';
 
 const Skills = () => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
 
-  const skillCategories = [
+  const skillCategories: SkillCategory[] = [
     {
       name: 'Programming Languages & Frameworks',
       skills: [
@@ -66,7 +67,7 @@ const Skills = () => {
     }
   ];
 
-  const containerVariants = {
+  const containerVariants: AnimationVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -76,7 +77,7 @@ const Skills = () => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: AnimationVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
