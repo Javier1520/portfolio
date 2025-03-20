@@ -8,7 +8,8 @@ import { useForm, ValidationError } from '@formspree/react';
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
-  const [state, handleSubmit] = useForm("xyyqzgko"); // Replace with your Formspree form ID
+  const formId = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID || '';
+  const [state, handleSubmit] = useForm(formId);
 
   const contactInfo = [
     {
