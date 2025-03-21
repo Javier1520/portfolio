@@ -101,8 +101,8 @@ const Projects = () => {
                   <Image
                     src={project.image}
                     alt={project.title}
-                    width={600}
-                    height={400}
+                    width={800}
+                    height={600}
                     className="object-cover"
                   />
                   {project.featured && (
