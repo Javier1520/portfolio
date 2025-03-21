@@ -10,42 +10,44 @@ const Projects = () => {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px 0px" });
 
-  const projects: Project[] = [
+  const projects: Project[] = [       
+    {
+      title: 'Electronic Logbook',
+      description: 'A Django DRF application for electronic logbook, truck routes.',
+      techStack: ['Django DRF', 'React', 'Shadcn'],
+      achievement: 'Effective use of maps with coordinates for a route and logbook.',
+      image: '/electronic-logbook.jpg',
+      links: {
+        github: 'https://github.com/Javier1520/eld',
+        deployed: 'https://eld-beige.vercel.app/'
+      },
+      featured: true
+    },
+    {
+      title: 'Financial Advisor Landing Page',
+      description: 'A responsive landing page built with Next.js 15 and styled with Tailwind CSS for optimal performance and aesthetics.',
+      techStack: ['React', 'Next.js', 'Tailwind CSS'],
+      achievement: 'Smooth navigation.',
+      image: '/financial.jpg',
+      links: {
+        github: 'https://github.com/Javier1520/financial-advisor-landing',
+        deployed: 'https://landing-financial.vercel.app/'
+      },
+      featured: false
+    },
     {
       title: 'Bingo Game',
       description: 'A full-stack Django DRF and React application enabling user registration, real-time gameplay, and win claims. Features secure API authentication with session tokens, WebSocket integration, and Dockerized deployment.',
       techStack: ['Django DRF', 'React', 'WebSockets', 'Docker', 'Pipenv'],
-      achievement: 'Reduced development time by 80% with Django test suite.',
+      achievement: 'Properly use of websockets.',
       image: '/bingo.jpg',
       links: {
         frontend: 'https://github.com/Javier1520/bingo-game-frontend',
         backend: 'https://github.com/Javier1520/bingo-game-backend',
         deployed: 'https://bingo-frontend-phi.vercel.app/'
       },
-      featured: true
-    },    
-    {
-      title: 'Electronic Logbook',
-      description: 'A Django DRF application for electronic logbook.',
-      techStack: ['Django DRF', 'Djoser', 'React'],
-      achievement: 'Effective use of maps with coordinates.',
-      image: '/electronic-logbook.jpg',
-      links: {
-        github: 'https://github.com/Javier1520/eld'
-      },
       featured: false
-    },
-    {
-      title: 'Financial Advisor Landing Page',
-      description: 'A responsive landing page built with Next.js 15 and styled with Tailwind CSS for optimal performance and aesthetics.',
-      techStack: ['Next.js', 'Tailwind CSS'],
-      achievement: '',
-      image: '/financial.jpg',
-      links: {
-        github: 'https://github.com/Javier1520/financial-advisor-landing'
-      },
-      featured: false
-    }
+    }, 
   ];
 
   const containerVariants: AnimationVariants = {
