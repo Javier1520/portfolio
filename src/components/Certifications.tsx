@@ -13,9 +13,9 @@ const Certifications = () => {
     {
       title: 'Meta Backend Developer Specialization',
       issuer: 'Meta',
-      description: 'A comprehensive certification covering backend development fundamentals, APIs, and database management.',
-      link: 'https://www.coursera.org/account/accomplishments/specialization/certificate/ABCDEFGH1234',
-      date: 'January 2023'
+      description: 'A comprehensive certification covering backend development fundamentals, APIs, and database management. Approximately 8 months at 6 hours a week to complete.',
+      link: 'https://www.coursera.org/account/accomplishments/professional-cert/9HTH4CHPWU34',
+      date: 'April 20, 2024'
     }
   ];
 
